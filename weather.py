@@ -35,13 +35,16 @@ def hit_weather():
     r = requests.get(url)
     return r.json()
 
-def temp():
+def curr(s):
     j = hit_weather()
-    return j["currently"]["temperature"]
+    return j["currently"][s]
+
+def temp():
+    return curr("temperature")
 
 def weather_summary():
-    j = hit_weather()
-    print j["currently"]
-    return j["currently"]["summary"]
+    return curr("summary")
 
-listen()
+    
+if __name__ == '__main__':
+    listen()
