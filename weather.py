@@ -16,6 +16,10 @@ def handle(text):
             current_temp = temp()
             message = "The current temperature is: {}".format(current_temp)
             SC.api_call("chat.postMessage", as_user="false", channel=channel, text=message, username="Weather Bot", icon_emoji=":mostly_sunny:")
+        elif message == "weather summary":
+            summary = weather_summary()
+            message = "Breif Weather Summary: {}".format(summary)
+            SC.api_call("chat.postMessage", as_user="false", channel=channel, text=message, username="Weather Bot", icon_emoji=":mostly_sunny:")
     # print type(text)
 
 def listen():
@@ -34,5 +38,10 @@ def hit_weather():
 def temp():
     j = hit_weather()
     return j["currently"]["temperature"]
-    
-listen()    
+
+def weather_summary():
+    j = hit_weather()
+    print j["currently"]
+    return j["currently"]["summary"]
+
+listen()
