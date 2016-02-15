@@ -27,6 +27,7 @@ class RespondBot(Bot):
             while True:
                 sc = SC.rtm_read()
                 if sc:
+                    print sc
                     self.handle(sc[0])
                 time.sleep(1)
 
@@ -37,16 +38,14 @@ class RespondBot(Bot):
                 if k in text["text"]:
                     self.say(text["channel"], v)
 
-"""
-tr = {"qwe": ":smile:"}
-
-data = {
-    "username": "notabot",
-    "icon": ":poop:",
-    "channels": "*",
-    "triggers_responses": tr
-}
-
-rb = RespondBot(**data)
-rb.listen()
-"""
+# tr = {"qwe": ":smile:", "poop": "pee"}
+# 
+# data = {
+#     "username": "notabot",
+#     "icon": ":poop:",
+#     "channels": "*",
+#     "triggers_responses": tr
+# }
+# 
+# rb = RespondBot(**data)
+# rb.listen()
