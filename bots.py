@@ -37,7 +37,7 @@ class RespondBot(Bot):
                 if k in text["text"]:
                     self.say(text["channel"], v)
 
-
+"""
 tr = {"qwe": ":smile:"}
 
 data = {
@@ -49,3 +49,4 @@ data = {
 
 rb = RespondBot(**data)
 rb.listen()
+"""

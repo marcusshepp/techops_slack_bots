@@ -2,10 +2,14 @@ import requests, time
 from slackclient import SlackClient
 
 from token import TOKEN
+from bots import RespondBot
 
 TEST_CHANNEL = "C0M5VFD2Q"
 RANDOM_CHANNEL = "C02GE2V9U"
 SC = SlackClient(TOKEN)
+bot_data = {
+    "username": "Weather Bot"}
+rs = RespondBot
 
 def handle(text):
     nt = text
