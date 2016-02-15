@@ -8,25 +8,34 @@ RANDOM_CHANNEL = "C02GE2V9U"
 SC = SlackClient(TOKEN)
 
 def handle(text):
-    print text
-    if text:
-        message = text[0].get("text", None)
-        channel = text[0].get("channel", None)
+    nt = text
+    print nt
+    if nt:
+        message = nt[0].get("text", None)
+        channel = nt[0].get("channel", None)
         if message == "temp" or message == "temperature":
             current_temp = temp()
-            message = "The current temperature is: {}".format(current_temp)
-            SC.api_call("chat.postMessage", as_user="false", channel=channel, text=message, username="Weather Bot", icon_emoji=":mostly_sunny:")
+            message = "The current temperature is: {} degrees ferienheit.".format(current_temp)
+            say(channel, message)
         elif message == "weather summary":
             summary = weather_summary()
             message = "Breif Weather Summary: {}".format(summary)
-            SC.api_call("chat.postMessage", as_user="false", channel=channel, text=message, username="Weather Bot", icon_emoji=":mostly_sunny:")
-    # print type(text)
+            say(channel, message)
+        elif message == "wind speed":
+            mph = wind_mph()
+            message = "Current Wind Speed: {} MPH".format(mph)
+            say(channel, message)
 
 def listen():
     if SC.rtm_connect():
         while True:
-            handle(SC.rtm_read())
+            sc = SC.rtm_read()
+            if sc:
+                handle(sc)
             time.sleep(1)
+
+def say(channel, message):
+    SC.api_call("chat.postMessage", as_user="false", channel=channel, text=message, username="Weather Bot", icon_emoji=":mostly_sunny:")
 
 def hit_weather():
     api_key = "614d199c734be239950bc890c7f30e9d"
@@ -45,6 +54,16 @@ def temp():
 def weather_summary():
     return curr("summary")
 
-    
+def wind_mph():
+    return curr("windSpeed")
+
+def p():
+    return hit_weather()
+
 if __name__ == '__main__':
-    listen()
+    handle(listen())
+    # p = p()
+    # for i in p:
+        # print i
+        # time.sleep(1)
+    # print p["currently"]
