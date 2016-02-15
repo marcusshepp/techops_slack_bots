@@ -35,37 +35,6 @@ def weather_summary():
 def wind_mph():
     return curr("windSpeed")
 
-
-# def handle(text):
-#     nt = text
-#     print nt
-#     if nt:
-#         message = nt[0].get("text", None)
-#         channel = nt[0].get("channel", None)
-#         if message == "temp" or message == "temperature":
-#             current_temp = temp()
-#             message = "The current temperature is: {} degrees ferienheit.".format(current_temp)
-#             say(channel, message)
-#         elif message == "weather summary":
-#             summary = weather_summary()
-#             message = "Breif Weather Summary: {}".format(summary)
-#             say(channel, message)
-#         elif message == "wind speed":
-#             mph = wind_mph()
-#             message = "Current Wind Speed: {} MPH".format(mph)
-#             say(channel, message)
-# 
-# def listen():
-#     if SC.rtm_connect():
-#         while True:
-#             sc = SC.rtm_read()
-#             if sc:
-#                 handle(sc)
-#             time.sleep(1)
-# 
-# def say(channel, message):
-#     SC.api_call("chat.postMessage", as_user="false", channel=channel, text=message, username=, icon_emoji=":mostly_sunny:")
-
 if __name__ == '__main__':
     tr = {
         "weather summary": "Current Brief Weather Summary: {}".format(weather_summary()),
