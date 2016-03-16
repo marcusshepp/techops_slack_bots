@@ -1,0 +1,6 @@
+EMAILTO="sheph2mj@cmich.edu"
+50     12       7       *       1       source /Users/sheph2mj/slack/bin/activate; python /Users/sheph2mj/bots/meeting.py
+
+0       9       *       *       2       source /Users/sheph2mj/slack/bin/activate; python /Users/sheph2mj/bots/merge_day.py
+
+0       9       *       *       3       source /Users/sheph2mj/slack/bin/activate; python /Users/sheph2mj/bots/deploy_day.py
